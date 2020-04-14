@@ -29,7 +29,17 @@ const run = async () => {
     throw err;
   }
 };
+const run2 = async () => {
+  const factoryAddress = "4174cd1f8fe09dc858683c3b5c16c370301d715d6f";
+  const tokenAddress = "41056c4b3c825e6220784a640945e11a563f129722";
 
-run().catch((err) => {
+  const factory = await tronWeb.contract().at(factoryAddress);
+
+  const exc = await factory.getExchange(tokenAddress).call();
+
+  console.log(exc);
+};
+
+run2().catch((err) => {
   console.error(err);
 });

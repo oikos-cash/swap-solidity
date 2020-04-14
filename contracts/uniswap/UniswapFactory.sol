@@ -46,7 +46,6 @@ contract UniswapFactory {
   // TODO: get token directly from exchange
   function registerExchange(address exchange, address token) public returns (address) {
     require(token != address(0));
-    require(exchangeTemplate != address(0));
     require(token_to_exchange[token] == address(0));
     token_to_exchange[token] = address(exchange);
     exchange_to_token[address(exchange)] = token;

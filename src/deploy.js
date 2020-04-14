@@ -56,7 +56,10 @@ const deployExchangeForSynth = async (factory, synthCode) => {
 
   // register with factory
   const exchangeAddress = contract.address;
-  await factory.registerExchange(exchangeAddress, tokenAddress).send();
+  const res = await factory
+    .registerExchange(exchangeAddress, tokenAddress)
+    .send({ shouldPollResponse: true });
+  console.log(res);
   // exchange deployed
 };
 
