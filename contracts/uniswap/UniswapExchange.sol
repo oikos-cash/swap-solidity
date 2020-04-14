@@ -570,7 +570,8 @@ contract UniswapExchange is ERC20 {
       return liquidity_minted;
 
     } else {
-      require(address(factory) != address(0) && address(token) != address(0) && msg.value >= 1000000000, "INVALID_VALUE");
+      require(address(factory) != address(0) && address(token) !=
+              address(0) && msg.value >= 1000000, "INVALID_VALUE");
       require(factory.getExchange(address(token)) == address(this));
       uint256 token_amount = max_tokens;
       uint256 initial_liquidity = address(this).balance;
