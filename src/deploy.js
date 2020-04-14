@@ -1,4 +1,6 @@
 // run "tronbox compile" first
+const fs = require("fs");
+const { promisify } = require("util");
 
 const TronWeb = require("tronweb");
 const { SynthetixJs } = require("@oikos/oikos-js");
@@ -59,24 +61,33 @@ const deployExchangeForSynth = async (factory, synthCode) => {
   const res = await factory
     .registerExchange(exchangeAddress, tokenAddress)
     .send({ shouldPollResponse: true });
+
   console.log(res);
+  console.log("Asking factory about the token exchange address:");
+  console.log(await factory.getExchange(tokenAddress).call());
   // exchange deployed
+  return contract;
+};
+
+const writeAddresses = async (obj) => {
+  await promisify(fs.writeFile)(
+    "./addresses.json",
+    JSON.stringify(obj, null, 2)
+  );
 };
 
 const run = async () => {
   const factory = await deployFactory();
-  await deployExchangeForSynth(factory, "sTRX");
+  const exchange = await deployExchangeForSynth(factory, "sTRX");
 
-  /*
-  const exchangeContract = new TronWeb.Contract(tronWeb, abi, address)
-  console.log(exchangeContract)
-  try {
-    await exchangeContract.totalSupply().call()
-  } catch (err) {
-    console.log(err.transaction.transaction.raw_data.contract[0].parameter.value)
-    throw err
-  }
-  */
+  console.log(await exchange.totalSupply().call());
+
+  await writeAddresses({
+    factory: factory.address,
+    exchanges: {
+      sTRX: exchange.address,
+    },
+  });
 };
 
 run().catch((err) => {

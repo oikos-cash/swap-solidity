@@ -1,5 +1,6 @@
 const TronWeb = require("tronweb");
 // const abi = require('../constants/abis/exchange.json')
+const addresses = require("../addresses.json");
 
 const abi = require("../build/contracts/UniswapExchange.json").abi;
 
@@ -14,10 +15,12 @@ const createTronWeb = () => {
 };
 const tronWeb = createTronWeb();
 
-const run = async () => {
-  const address = "4181320633b7cae3be5b8655bb5d09d4a1a4cbf168";
-
-  const exchangeContract = new TronWeb.Contract(tronWeb, abi, address);
+const debugTotalSupply = async () => {
+  const exchangeContract = new TronWeb.Contract(
+    tronWeb,
+    abi,
+    addresses.exchanges.sTRX
+  );
   console.log(exchangeContract);
   try {
     const res = await exchangeContract.totalSupply().call();
@@ -29,17 +32,25 @@ const run = async () => {
     throw err;
   }
 };
-const run2 = async () => {
-  const factoryAddress = "4174cd1f8fe09dc858683c3b5c16c370301d715d6f";
+
+const debugGetExchange = async () => {
   const tokenAddress = "41056c4b3c825e6220784a640945e11a563f129722";
+  const factoryAddress = addresses.factory;
+  const exchangeAddress = addresses.exchanges.sTRX;
 
   const factory = await tronWeb.contract().at(factoryAddress);
 
-  const exc = await factory.getExchange(tokenAddress).call();
+  let res;
+  res = await factory.getExchange(tokenAddress).call();
 
-  console.log(exc);
+  console.log(res);
 };
 
-run2().catch((err) => {
+const main = async () => {
+  // await debugTotalSupply();
+  await debugGetExchange();
+};
+
+main().catch((err) => {
   console.error(err);
 });

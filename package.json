@@ -1,5 +1,5 @@
 {
-  "name": "project-name",
+  "name": "@oikos/swap",
   "version": "0.0.1",
   "description": "Project description",
   "repository": "https://github.com/phabc/base-solidity-repository",
