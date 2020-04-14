@@ -33,7 +33,21 @@ contract UniswapFactory {
     require(exchangeTemplate != address(0));
     require(token_to_exchange[token] == address(0));
     UniswapExchange exchange = new UniswapExchange();
-    exchange.setup(token);
+    exchange.setup(token, address(this));
+    token_to_exchange[token] = address(exchange);
+    exchange_to_token[address(exchange)] = token;
+    uint256 token_id = tokenCount + 1;
+    tokenCount = token_id;
+    id_to_token[token_id] = token;
+    emit NewExchange(token, address(exchange));
+    return address(exchange);
+  }
+
+  // TODO: get token directly from exchange
+  function registerExchange(address exchange, address token) public returns (address) {
+    require(token != address(0));
+    require(exchangeTemplate != address(0));
+    require(token_to_exchange[token] == address(0));
     token_to_exchange[token] = address(exchange);
     exchange_to_token[address(exchange)] = token;
     uint256 token_id = tokenCount + 1;

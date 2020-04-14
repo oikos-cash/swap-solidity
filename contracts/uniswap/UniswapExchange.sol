@@ -33,12 +33,12 @@ contract UniswapExchange is ERC20 {
    * @dev This function acts as a contract constructor which is not currently supported in contracts deployed
    *      using create_with_code_of(). It is called once by the factory during contract creation.
    */
-  function setup(address token_addr) public {
+  function setup(address token_addr, address factory_addr) public {
     require(
       address(factory) == address(0) && address(token) == address(0) && token_addr != address(0),
       "INVALID_ADDRESS"
     );
-    factory = IUniswapFactory(msg.sender);
+    factory = IUniswapFactory(factory_addr);
     token = IERC20(token_addr);
     name = 0x556e697377617020563100000000000000000000000000000000000000000000;
     symbol = 0x554e492d56310000000000000000000000000000000000000000000000000000;
