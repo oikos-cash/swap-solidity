@@ -27,7 +27,7 @@ contract UniswapFactory {
     require(template != address(0));
     exchangeTemplate = template;
   }
-  
+
   function createExchange(address token) public returns (address) {
     require(token != address(0));
     require(exchangeTemplate != address(0));

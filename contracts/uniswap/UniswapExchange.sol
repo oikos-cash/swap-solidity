@@ -17,7 +17,7 @@ contract UniswapExchange is ERC20 {
   uint256 public decimals;     // 18
   IERC20 token;                // address of the ERC20 token traded on this contract
   IUniswapFactory factory;     // interface for the factory that created this contract
-  
+
   // Events
   event TokenPurchase(address indexed buyer, uint256 indexed eth_sold, uint256 indexed tokens_bought);
   event EthPurchase(address indexed buyer, uint256 indexed tokens_sold, uint256 indexed eth_bought);
@@ -29,13 +29,13 @@ contract UniswapExchange is ERC20 {
   |            Constsructor           |
   |__________________________________*/
 
-  /**  
+  /**
    * @dev This function acts as a contract constructor which is not currently supported in contracts deployed
    *      using create_with_code_of(). It is called once by the factory during contract creation.
    */
   function setup(address token_addr) public {
-    require( 
-      address(factory) == address(0) && address(token) == address(0) && token_addr != address(0), 
+    require(
+      address(factory) == address(0) && address(token) == address(0) && token_addr != address(0),
       "INVALID_ADDRESS"
     );
     factory = IUniswapFactory(msg.sender);
@@ -99,18 +99,18 @@ contract UniswapExchange is ERC20 {
     return tokens_bought;
   }
 
-  /** 
+  /**
    * @notice Convert ETH to Tokens.
    * @dev User specifies exact input (msg.value) && minimum output.
    * @param min_tokens Minimum Tokens bought.
    * @param deadline Time after which this transaction can no longer be executed.
    * @return Amount of Tokens bought.
-   */ 
+   */
   function ethToTokenSwapInput(uint256 min_tokens, uint256 deadline) public payable returns (uint256) {
     return ethToTokenInput(msg.value, min_tokens, deadline, msg.sender, msg.sender);
   }
 
-  /** 
+  /**
    * @notice Convert ETH to Tokens && transfers Tokens to recipient.
    * @dev User specifies exact input (msg.value) && minimum output
    * @param min_tokens Minimum Tokens bought.
@@ -137,7 +137,7 @@ contract UniswapExchange is ERC20 {
     return eth_sold;
   }
 
-  /** 
+  /**
    * @notice Convert ETH to Tokens.
    * @dev User specifies maximum input (msg.value) && exact output.
    * @param tokens_bought Amount of tokens bought.
@@ -148,7 +148,7 @@ contract UniswapExchange is ERC20 {
     return ethToTokenOutput(tokens_bought, msg.value, deadline, msg.sender, msg.sender);
   }
 
-  /** 
+  /**
    * @notice Convert ETH to Tokens && transfers Tokens to recipient.
    * @dev User specifies maximum input (msg.value) && exact output.
    * @param tokens_bought Amount of tokens bought.
@@ -173,7 +173,7 @@ contract UniswapExchange is ERC20 {
     return wei_bought;
   }
 
-  /** 
+  /**
    * @notice Convert Tokens to ETH.
    * @dev User specifies exact input && minimum output.
    * @param tokens_sold Amount of Tokens sold.
@@ -185,7 +185,7 @@ contract UniswapExchange is ERC20 {
     return tokenToEthInput(tokens_sold, min_eth, deadline, msg.sender, msg.sender);
   }
 
-  /** 
+  /**
    * @notice Convert Tokens to ETH && transfers ETH to recipient.
    * @dev User specifies exact input && minimum output.
    * @param tokens_sold Amount of Tokens sold.
@@ -199,7 +199,7 @@ contract UniswapExchange is ERC20 {
     return tokenToEthInput(tokens_sold, min_eth, deadline, msg.sender, recipient);
   }
 
-  
+
   function tokenToEthOutput(uint256 eth_bought, uint256 max_tokens, uint256 deadline, address buyer, address payable recipient) private returns (uint256) {
     require(deadline >= block.timestamp && eth_bought > 0);
     uint256 token_reserve = token.balanceOf(address(this));
@@ -212,7 +212,7 @@ contract UniswapExchange is ERC20 {
     return tokens_sold;
   }
 
-  /** 
+  /**
    * @notice Convert Tokens to ETH.
    * @dev User specifies maximum input && exact output.
    * @param eth_bought Amount of ETH purchased.
@@ -239,14 +239,14 @@ contract UniswapExchange is ERC20 {
   }
 
   function tokenToTokenInput(
-    uint256 tokens_sold, 
-    uint256 min_tokens_bought, 
-    uint256 min_eth_bought, 
+    uint256 tokens_sold,
+    uint256 min_tokens_bought,
+    uint256 min_eth_bought,
     uint256 deadline,
-    address buyer, 
-    address recipient, 
-    address payable exchange_addr) 
-    private returns (uint256) 
+    address buyer,
+    address recipient,
+    address payable exchange_addr)
+    private returns (uint256)
   {
     require(deadline >= block.timestamp && tokens_sold > 0 && min_tokens_bought > 0 && min_eth_bought > 0);
     require(exchange_addr != address(this) && exchange_addr != address(0));
@@ -271,12 +271,12 @@ contract UniswapExchange is ERC20 {
    * @return Amount of Tokens (token_addr) bought.
    */
   function tokenToTokenSwapInput(
-    uint256 tokens_sold, 
-    uint256 min_tokens_bought, 
-    uint256 min_eth_bought, 
-    uint256 deadline, 
-    address token_addr) 
-    public returns (uint256) 
+    uint256 tokens_sold,
+    uint256 min_tokens_bought,
+    uint256 min_eth_bought,
+    uint256 deadline,
+    address token_addr)
+    public returns (uint256)
   {
     address payable exchange_addr = factory.getExchange(token_addr);
     return tokenToTokenInput(tokens_sold, min_tokens_bought, min_eth_bought, deadline, msg.sender, msg.sender, exchange_addr);
@@ -295,27 +295,27 @@ contract UniswapExchange is ERC20 {
    * @return Amount of Tokens (token_addr) bought.
    */
   function tokenToTokenTransferInput(
-    uint256 tokens_sold, 
-    uint256 min_tokens_bought, 
-    uint256 min_eth_bought, 
-    uint256 deadline, 
-    address recipient, 
-    address token_addr) 
-    public returns (uint256) 
+    uint256 tokens_sold,
+    uint256 min_tokens_bought,
+    uint256 min_eth_bought,
+    uint256 deadline,
+    address recipient,
+    address token_addr)
+    public returns (uint256)
   {
     address payable exchange_addr = factory.getExchange(token_addr);
     return tokenToTokenInput(tokens_sold, min_tokens_bought, min_eth_bought, deadline, msg.sender, recipient, exchange_addr);
   }
 
   function tokenToTokenOutput(
-    uint256 tokens_bought, 
-    uint256 max_tokens_sold, 
-    uint256 max_eth_sold, 
-    uint256 deadline, 
-    address buyer, 
-    address recipient, 
-    address payable exchange_addr) 
-    private returns (uint256) 
+    uint256 tokens_bought,
+    uint256 max_tokens_sold,
+    uint256 max_eth_sold,
+    uint256 deadline,
+    address buyer,
+    address recipient,
+    address payable exchange_addr)
+    private returns (uint256)
   {
     require(deadline >= block.timestamp && (tokens_bought > 0 && max_eth_sold > 0));
     require(exchange_addr != address(this) && exchange_addr != address(0));
@@ -341,12 +341,12 @@ contract UniswapExchange is ERC20 {
    * @return Amount of Tokens (token) sold.
    */
   function tokenToTokenSwapOutput(
-    uint256 tokens_bought, 
-    uint256 max_tokens_sold, 
-    uint256 max_eth_sold, 
-    uint256 deadline, 
-    address token_addr) 
-    public returns (uint256) 
+    uint256 tokens_bought,
+    uint256 max_tokens_sold,
+    uint256 max_eth_sold,
+    uint256 deadline,
+    address token_addr)
+    public returns (uint256)
   {
     address payable exchange_addr = factory.getExchange(token_addr);
     return tokenToTokenOutput(tokens_bought, max_tokens_sold, max_eth_sold, deadline, msg.sender, msg.sender, exchange_addr);
@@ -365,13 +365,13 @@ contract UniswapExchange is ERC20 {
    * @return Amount of Tokens (token) sold.
    */
   function tokenToTokenTransferOutput(
-    uint256 tokens_bought, 
-    uint256 max_tokens_sold, 
-    uint256 max_eth_sold, 
-    uint256 deadline, 
-    address recipient, 
-    address token_addr) 
-    public returns (uint256) 
+    uint256 tokens_bought,
+    uint256 max_tokens_sold,
+    uint256 max_eth_sold,
+    uint256 deadline,
+    address recipient,
+    address token_addr)
+    public returns (uint256)
   {
     address payable exchange_addr = factory.getExchange(token_addr);
     return tokenToTokenOutput(tokens_bought, max_tokens_sold, max_eth_sold, deadline, msg.sender, recipient, exchange_addr);
@@ -389,12 +389,12 @@ contract UniswapExchange is ERC20 {
    * @return Amount of Tokens (exchange_addr.token) bought.
    */
   function tokenToExchangeSwapInput(
-    uint256 tokens_sold, 
-    uint256 min_tokens_bought, 
-    uint256 min_eth_bought, 
-    uint256 deadline, 
-    address payable exchange_addr) 
-    public returns (uint256) 
+    uint256 tokens_sold,
+    uint256 min_tokens_bought,
+    uint256 min_eth_bought,
+    uint256 deadline,
+    address payable exchange_addr)
+    public returns (uint256)
   {
     return tokenToTokenInput(tokens_sold, min_tokens_bought, min_eth_bought, deadline, msg.sender, msg.sender, exchange_addr);
   }
@@ -413,13 +413,13 @@ contract UniswapExchange is ERC20 {
    * @return Amount of Tokens (exchange_addr.token) bought.
    */
   function tokenToExchangeTransferInput(
-    uint256 tokens_sold, 
-    uint256 min_tokens_bought, 
-    uint256 min_eth_bought, 
-    uint256 deadline, 
-    address recipient, 
-    address payable exchange_addr) 
-    public returns (uint256) 
+    uint256 tokens_sold,
+    uint256 min_tokens_bought,
+    uint256 min_eth_bought,
+    uint256 deadline,
+    address recipient,
+    address payable exchange_addr)
+    public returns (uint256)
   {
     require(recipient != address(this));
     return tokenToTokenInput(tokens_sold, min_tokens_bought, min_eth_bought, deadline, msg.sender, recipient, exchange_addr);
@@ -437,12 +437,12 @@ contract UniswapExchange is ERC20 {
    * @return Amount of Tokens (token) sold.
    */
   function tokenToExchangeSwapOutput(
-    uint256 tokens_bought, 
-    uint256 max_tokens_sold, 
-    uint256 max_eth_sold, 
-    uint256 deadline, 
-    address payable exchange_addr) 
-    public returns (uint256) 
+    uint256 tokens_bought,
+    uint256 max_tokens_sold,
+    uint256 max_eth_sold,
+    uint256 deadline,
+    address payable exchange_addr)
+    public returns (uint256)
   {
     return tokenToTokenOutput(tokens_bought, max_tokens_sold, max_eth_sold, deadline, msg.sender, msg.sender, exchange_addr);
   }
@@ -461,13 +461,13 @@ contract UniswapExchange is ERC20 {
    * @return Amount of Tokens (token) sold.
    */
   function tokenToExchangeTransferOutput(
-    uint256 tokens_bought, 
-    uint256 max_tokens_sold, 
-    uint256 max_eth_sold, 
-    uint256 deadline, 
-    address recipient, 
-    address payable exchange_addr) 
-    public returns (uint256) 
+    uint256 tokens_bought,
+    uint256 max_tokens_sold,
+    uint256 max_eth_sold,
+    uint256 deadline,
+    address recipient,
+    address payable exchange_addr)
+    public returns (uint256)
   {
     require(recipient != address(this));
     return tokenToTokenOutput(tokens_bought, max_tokens_sold, max_eth_sold, deadline, msg.sender, recipient, exchange_addr);
@@ -524,7 +524,7 @@ contract UniswapExchange is ERC20 {
     return getOutputPrice(eth_bought, token_reserve, address(this).balance);
   }
 
-  /** 
+  /**
    * @return Address of Token that is sold on this exchange.
    */
   function tokenAddress() public view returns (address) {
@@ -543,7 +543,7 @@ contract UniswapExchange is ERC20 {
   |        Liquidity Functions        |
   |__________________________________*/
 
-  /** 
+  /**
    * @notice Deposit ETH && Tokens (token) at current ratio to mint UNI tokens.
    * @dev min_liquidity does nothing when total UNI supply is 0.
    * @param min_liquidity Minimum number of UNI sender will mint if total UNI supply is greater than 0.
