@@ -8,6 +8,17 @@ const { SynthetixJs } = require("@oikos/oikos-js");
 const UniswapFactory = require("../build/contracts/UniswapFactory.json");
 const UniswapExchange = require("../build/contracts/UniswapExchange.json");
 
+const isReset = process.argv.includes("--reset");
+let addresses = require("../addresses.json") || {};
+
+if (isReset) {
+  addresses = {};
+}
+
+if (!isReset) {
+  console.log("Info: use --reset to force new deploy \n");
+}
+
 const createTronWeb = () => {
   const HttpProvider = TronWeb.providers.HttpProvider;
   const fullNode = new HttpProvider("https://api.shasta.trongrid.io");
@@ -25,6 +36,11 @@ const deployFactory = async () => {
   const abi = UniswapFactory.abi;
   const bytecode = UniswapFactory.bytecode;
 
+  if (!isReset && addresses.factory) {
+    console.log(`Factory already deployed, skipping. Use --reset to override.`);
+    return new TronWeb.Contract(tronWeb, abi, addresses.factory);
+  }
+
   const contract = await tronWeb.contract().new({
     abi,
     bytecode,
@@ -35,14 +51,24 @@ const deployFactory = async () => {
     // parameters:[para1,2,3,...]
   });
 
-  console.log("factory address", contract.address);
+  console.log(`Deployed factory`);
+
+  addresses.factory = contract.address;
   return contract;
 };
 
 const deployExchangeForSynth = async (factory, synthCode) => {
   const synthAddress = snx[synthCode].contract.address;
-
   const { abi, bytecode } = UniswapExchange;
+
+  if (!isReset && addresses.exchanges[synthCode]) {
+    console.log(`${synthCode} exchange already deployed, skipping.`);
+    return new TronWeb.Contract(
+      tronWeb,
+      abi,
+      addresses.exchanges[synthCode].address
+    );
+  }
 
   const contract = await tronWeb.contract().new({
     abi,
@@ -50,7 +76,6 @@ const deployExchangeForSynth = async (factory, synthCode) => {
     callValue: 0,
     // parameters:[para1,2,3,...]
   });
-  console.log(`${synthCode} exchange address`, contract.address);
 
   const factoryAddress = factory.address;
   const tokenAddress = synthAddress;
@@ -62,10 +87,24 @@ const deployExchangeForSynth = async (factory, synthCode) => {
     .registerExchange(exchangeAddress, tokenAddress)
     .send({ shouldPollResponse: true });
 
-  console.log(res);
+  if (typeof res !== "string") {
+    console.log(res);
+  }
+
+  console.log(`Deployed exchange for ${synthCode} at ${exchangeAddress}`);
+
+  /*
   console.log("Asking factory about the token exchange address:");
   console.log(await factory.getExchange(tokenAddress).call());
+  */
   // exchange deployed
+  addresses.exchanges = {
+    ...(addresses.exchanges || {}),
+    [synthCode]: {
+      address: contract.address,
+      tokenAddress,
+    },
+  };
   return contract;
 };
 
@@ -78,16 +117,21 @@ const writeAddresses = async (obj) => {
 
 const run = async () => {
   const factory = await deployFactory();
-  const exchange = await deployExchangeForSynth(factory, "sTRX");
+  await writeAddresses(addresses);
 
-  console.log(await exchange.totalSupply().call());
+  // deploy all synths!
+  for (synth of snx.contractSettings.synths) {
+    try {
+      await deployExchangeForSynth(factory, synth.name);
+      await writeAddresses(addresses);
+    } catch (err) {
+      console.error(`Error deploying ${synth.name}`);
+      console.error(err);
+    }
+  }
 
-  await writeAddresses({
-    factory: factory.address,
-    exchanges: {
-      sTRX: exchange.address,
-    },
-  });
+  // console.log(await exchange.totalSupply().call());
+  await writeAddresses(addresses);
 };
 
 run().catch((err) => {
