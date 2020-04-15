@@ -1,8 +1,8 @@
 {
   "name": "@oikos/swap",
   "version": "0.0.1",
-  "description": "Project description",
-  "repository": "https://github.com/phabc/base-solidity-repository",
+  "description": "Oikos Swap Contracts",
+  "repository": "https://github.com/oikos-cash/swap",
   "license": "MIT",
   "keywords": [
     "ERC",
@@ -12,7 +12,9 @@
     "LICENSE",
     "build",
     "contracts",
-    "typings"
+    "typings",
+    "addresses.json",
+    "src"
   ],
   "scripts": {
     "build": "truffle compile --all && yarn gen:contract-typings && tsc -b",
