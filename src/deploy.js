@@ -4,6 +4,7 @@ const { promisify } = require("util");
 
 const TronWeb = require("tronweb");
 const { SynthetixJs } = require("@oikos/oikos-js");
+const oikos = require("@oikos/oikos");
 
 const UniswapFactory = require("../build/contracts/UniswapFactory.json");
 const UniswapExchange = require("../build/contracts/UniswapExchange.json");
@@ -16,7 +17,9 @@ if (isReset) {
 }
 
 if (!isReset) {
-  console.log("Info: use --reset to force new deploy \n");
+  console.log(
+    "Info: use --reset or remove items from addresses.json to force new deploy \n"
+  );
 }
 
 const createTronWeb = () => {
@@ -60,7 +63,7 @@ const deployFactory = async () => {
 const deployExchangeForSynth = async (factory, synthCode) => {
   let synthAddress;
   if (synthCode === "OKS") {
-    synthAddress = snx.Synthetix.contract.address;
+    synthAddress = oikos.getTarget({ network: "shasta" }).ProxyERC20.address;
   } else {
     synthAddress = snx[synthCode].contract.address;
   }
