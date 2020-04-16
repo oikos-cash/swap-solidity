@@ -132,6 +132,10 @@
     "iDEFI": {
       "address": "4167c2ced0869b196e708709fce9d5f8d593858673",
       "tokenAddress": "413e8d8b74b6e35dc7bac51c71b24e370707056125"
+    },
+    "OKS": {
+      "address": "419676716fa8730becea268b4266aa2a817cc544df",
+      "tokenAddress": "411d300ced0731d46822b55ca0b40061f0ab9683c7"
     }
   }
 }
