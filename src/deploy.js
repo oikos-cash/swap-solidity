@@ -58,7 +58,12 @@ const deployFactory = async () => {
 };
 
 const deployExchangeForSynth = async (factory, synthCode) => {
-  const synthAddress = snx[synthCode].contract.address;
+  let synthAddress;
+  if (synthCode === "OKS") {
+    synthAddress = snx.Synthetix.contract.address;
+  } else {
+    synthAddress = snx[synthCode].contract.address;
+  }
   const { abi, bytecode } = UniswapExchange;
 
   if (!isReset && addresses.exchanges[synthCode]) {
@@ -118,6 +123,9 @@ const writeAddresses = async (obj) => {
 const run = async () => {
   const factory = await deployFactory();
   await writeAddresses(addresses);
+
+  // deploy OKS
+  await deployExchangeForSynth(factory, "OKS");
 
   // deploy all synths!
   for (synth of snx.contractSettings.synths) {
