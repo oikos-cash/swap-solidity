@@ -9,17 +9,20 @@ npm install
 Private key to use for deployment:
 
 ```bash
+export TRON_NETWORK=shasta
+# export DEPLOY_PRIVATE_KEY_MAINNET=privatekey_for_mainnet
 export PRIVATE_KEY=yourprivatekey
 ```
 
-Compile contracts and deploy on shasta:
+Compile contracts:
 
 ```bash
-npx tronbox migrate --network shasta --reset
+npm run compile
 ```
 
-Or on mainnet:
+Deploy:
 
 ```bash
-npx tronbox migrate --network mainnet --reset
+npm run deploy:mainnet
+npm run deploy:shasta
 ```

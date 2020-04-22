@@ -1,141 +1,36 @@
 {
-  "factory": "4179e2f6a8ff703385fe425e1165a24f84ba25f788",
-  "exchanges": {
-    "XDR": {
-      "address": "417ebfbec2fc8511846b799ae9a8031910d719f967",
-      "tokenAddress": "415e9c5794f9505ca97c323296cbc50fcc3447e921"
+  "mainnet": {
+    "exchanges": {
+      "OKS": {
+        "address": "41c4ff5687519502bc38c47e742622396a87906391",
+        "tokenAddress": "41e90ca52ebf82c295d79024076d37b6c5c604e172"
+      },
+      "sUSD": {
+        "address": "41179297a859270da3a198b04bf8a8eacabc5588ca",
+        "tokenAddress": "4166dd0a09022885b1a5eb543815f264b40d2f232a"
+      },
+      "sTRX": {
+        "address": "41020c35f781bc9e50acf40dea40157d04e397c316",
+        "tokenAddress": "4163f025e0e40e62b1600e90e0b563e99e838a616c"
+      }
     },
-    "sEUR": {
-      "address": "415ec97a1bc2b0761e3063f71c4c79cb215bb7bb5c",
-      "tokenAddress": "418bf6e0f33dc5a0d09e88a6b2fa107d47af226851"
+    "factory": "41e11d740217ffae38d630ed19cee570fa84a7f1de"
+  },
+  "shasta": {
+    "exchanges": {
+      "OKS": {
+        "address": "4130c4c47bc610904402d6fd04ef2ef0d5c34726ea",
+        "tokenAddress": "41e90ca52ebf82c295d79024076d37b6c5c604e172"
+      },
+      "sUSD": {
+        "address": "41a5938956d834061bd78d2a34c88ee7020c36da7d",
+        "tokenAddress": "410e137dcc4bdb5bdbeb4dc7ea7f572f2dc683152d"
+      },
+      "sTRX": {
+        "address": "414ad3664873cc88a50e25ec58516eb4c4f05f2b83",
+        "tokenAddress": "41056c4b3c825e6220784a640945e11a563f129722"
+      }
     },
-    "sJPY": {
-      "address": "41763813131db559ca5c40bb1b128701be2b944687",
-      "tokenAddress": "4153cff94c2637ae3a917f8d06ae5c82f13f33f21b"
-    },
-    "sUSD": {
-      "address": "410504c42dfe5cd76b8c5fbb446207f733294011d0",
-      "tokenAddress": "410e137dcc4bdb5bdbeb4dc7ea7f572f2dc683152d"
-    },
-    "sAUD": {
-      "address": "41a7e85f19437debc3797db0e2a74be8de6e7c8fd2",
-      "tokenAddress": "41ebb444fc83bbdc137bf23cd2d699583f26e5e24c"
-    },
-    "sGBP": {
-      "address": "415cd50aa585d58127d727861b96319f23d4050824",
-      "tokenAddress": "4107a530f23d1810774491bd236d8975128e86b155"
-    },
-    "sCHF": {
-      "address": "41027ebdf2f3c5bddebeaa6aa172678915c4318c36",
-      "tokenAddress": "41751cfd43741cbcbde2e3281dbf6dc4970d733d58"
-    },
-    "sXAU": {
-      "address": "41e182d02bce4a57ad0eca21b1176f816ba95faa33",
-      "tokenAddress": "412eeb27e6ac2e9fc2102f8f7f26655c480147a681"
-    },
-    "sXAG": {
-      "address": "417c62d0f5434f403bbbac5ee13962d984eaae687d",
-      "tokenAddress": "41c8d485446e38ca26cbb9da7720cfcdaa40a49449"
-    },
-    "sBTC": {
-      "address": "41530934b1d6618426c50a20f437c9962c3cac3ced",
-      "tokenAddress": "4191bb613fbc39010b69654e368f59af1b1225cc3b"
-    },
-    "sETH": {
-      "address": "413d0453d294fb03bf68e018b0dfb212100de79fb3",
-      "tokenAddress": "41cdb6ce98bf43737fdb55a696efbc25581bb2bdce"
-    },
-    "sBTT": {
-      "address": "4125d2818497c050112ac9f915207e02d98085bc4a",
-      "tokenAddress": "41869e068206f3a9197c5ba6e1501a51d2169301c0"
-    },
-    "sBNB": {
-      "address": "4156d4c728338ac5bca9d64fc75ad36d4cf2273dbd",
-      "tokenAddress": "41b34c0d9dd110abf994e8d26534845ab8fb5dbd03"
-    },
-    "sMKR": {
-      "address": "41d9acfa5e439493d8103cb62a11248ca07f8ffb7e",
-      "tokenAddress": "4145c048666969a076283e020130cf0812cbf14cb9"
-    },
-    "sTRX": {
-      "address": "412a72d289b9ed5b65ca126a7e5cccfb761fc802a6",
-      "tokenAddress": "41056c4b3c825e6220784a640945e11a563f129722"
-    },
-    "sXTZ": {
-      "address": "41a2bec39f6094d3bfae19496caa0af8bb5dee90bf",
-      "tokenAddress": "41cf80943e0f615c75a0a1317bcde29a6ab7b845c3"
-    },
-    "sXRP": {
-      "address": "4193e43c2791318c85bfce541227ee11da0044b5d5",
-      "tokenAddress": "413408c98df23262d2f40ee5a7ef593c8e5decd5da"
-    },
-    "sLTC": {
-      "address": "41e57b490ffdf40cea23d7e3369fa5b5ce913b02c5",
-      "tokenAddress": "414d48b922113fa0fd8f4cee7132632e665c5d927a"
-    },
-    "sLINK": {
-      "address": "41d4eef45394bace999cc52acfead4e8f3f11d2f62",
-      "tokenAddress": "4113ccbdc837f1f041a81f284bcc73e3ee78bb1945"
-    },
-    "sCEX": {
-      "address": "41a2a451189755caae0d59d5343754dd256016f77e",
-      "tokenAddress": "417a73eba77d5c53f3a6d325fcdd462e39f6374eb5"
-    },
-    "sDEFI": {
-      "address": "41e42375d56f6cec91e040bdd8898b55af61dbaa36",
-      "tokenAddress": "4188482b9c35ea358c356595299cad4ea9433a48e0"
-    },
-    "iBTC": {
-      "address": "4170c1ab225131e3a2a766e3b0353627a76387c4aa",
-      "tokenAddress": "416f04a9377cb5314440389959d823dde7aa81393c"
-    },
-    "iTRX": {
-      "address": "41adca6e7b0dd0ec331866c2ce2618afd3a17a7c39",
-      "tokenAddress": "41fdba43983964e67623a2a491710c3deaf8580e55"
-    },
-    "iETH": {
-      "address": "41d9a5d4a7d1aae815c201ecf9c1e0ba0a6c147842",
-      "tokenAddress": "41fb714652d6193f2243002a5952ee66d7509b23ce"
-    },
-    "iBTT": {
-      "address": "41101a233db3257f00fa250621d37d027c38df3cb5",
-      "tokenAddress": "4193acf9adc872f9b17baff79e0f5fefa2a0653093"
-    },
-    "iBNB": {
-      "address": "41d84ef33ccbc62074455d1332ce0021ccd8790e65",
-      "tokenAddress": "4104f261435e1657c3ffd546970109d6cfbe297963"
-    },
-    "iMKR": {
-      "address": "4158f9d503defb13f368a355f37663df17a7161592",
-      "tokenAddress": "41e739c88954af704a6e23e019daf8e8330d1db6e8"
-    },
-    "iXTZ": {
-      "address": "415b1fc832d32e2d15b95df43112d94b9fe2105cda",
-      "tokenAddress": "41b8f10c41942126c773ce2b85a981dc873acefc40"
-    },
-    "iXRP": {
-      "address": "4164816bfb602369ce1cbf92230e39b775fc092064",
-      "tokenAddress": "418334e836bcf277a3eb6dcfb4e38bd2c9d0b70d87"
-    },
-    "iLINK": {
-      "address": "417ecbd975a2491b16f2950e1570856f5f105eeea0",
-      "tokenAddress": "4185f45891894d62d9f4880559866709d35fc56847"
-    },
-    "iLTC": {
-      "address": "41bef616a8bda2244447bf475f7e95475d5003217b",
-      "tokenAddress": "41cb3164f2072b06fc3b61568a1df32f53df8b4db2"
-    },
-    "iCEX": {
-      "address": "41f6b7c53923b51b89d6e62859df48111c77b38b04",
-      "tokenAddress": "41e039138fdb99d16c15d1671805945b6543e4f9a2"
-    },
-    "iDEFI": {
-      "address": "4167c2ced0869b196e708709fce9d5f8d593858673",
-      "tokenAddress": "413e8d8b74b6e35dc7bac51c71b24e370707056125"
-    },
-    "OKS": {
-      "address": "41a54cff6840baaf1e074c6f4ae70cd5828406047e",
-      "tokenAddress": "41e90ca52ebf82c295d79024076d37b6c5c604e172"
-    }
+    "factory": "41c898d89e9b2858f4e7ae652678029d4a621be827"
   }
 }

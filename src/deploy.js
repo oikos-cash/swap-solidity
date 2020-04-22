@@ -10,7 +10,17 @@ const UniswapFactory = require("../build/contracts/UniswapFactory.json");
 const UniswapExchange = require("../build/contracts/UniswapExchange.json");
 
 const isReset = process.argv.includes("--reset");
-let addresses = require("../addresses.json") || {};
+let allAddresses = require("../addresses.json");
+if (Object.keys(allAddresses).length === 0) {
+  allAddresses = {
+    mainnet: { exchanges: {} },
+    shasta: { exchanges: {} },
+  };
+}
+
+const network = process.env.TRON_NETWORK || "mainnet";
+
+const addresses = allAddresses[network];
 
 if (isReset) {
   addresses = {};
@@ -24,16 +34,24 @@ if (!isReset) {
 
 const createTronWeb = () => {
   const HttpProvider = TronWeb.providers.HttpProvider;
-  const fullNode = new HttpProvider("https://api.shasta.trongrid.io");
-  const solidityNode = new HttpProvider("https://api.shasta.trongrid.io");
-  const eventServer = "https://api.shasta.trongrid.io";
-  const privateKey = process.env.PRIVATE_KEY;
+  const subdomain = network === "mainnet" ? "" : `${network}.`;
+  const fullNode = new HttpProvider(`https://api.${subdomain}trongrid.io`);
+  const solidityNode = new HttpProvider(`https://api.${subdomain}trongrid.io`);
+  const eventServer = `https://api.${subdomain}trongrid.io`;
+  const privateKey =
+    network === "mainnet"
+      ? process.env.DEPLOY_PRIVATE_KEY_MAINNET
+      : process.env.PRIVATE_KEY;
   const tronWeb = new TronWeb(fullNode, solidityNode, eventServer, privateKey);
   return tronWeb;
 };
 
 const tronWeb = createTronWeb();
-const snx = new SynthetixJs({ networkId: 2 });
+const networkId = {
+  mainnet: 1,
+  shasta: 2,
+}[network];
+const snx = new SynthetixJs({ networkId });
 
 const deployFactory = async () => {
   const abi = UniswapFactory.abi;
@@ -123,18 +141,23 @@ const writeAddresses = async (obj) => {
   );
 };
 
+const synthWhitelist = ["sUSD", "sTRX", "OKS"];
+
 const run = async () => {
   const factory = await deployFactory();
-  await writeAddresses(addresses);
+  await writeAddresses(allAddresses);
 
   // deploy OKS
   await deployExchangeForSynth(factory, "OKS");
 
   // deploy all synths!
-  for (synth of snx.contractSettings.synths) {
+  const synths = snx.contractSettings.synths.filter((s) =>
+    synthWhitelist.includes(s.name)
+  );
+  for (synth of synths) {
     try {
       await deployExchangeForSynth(factory, synth.name);
-      await writeAddresses(addresses);
+      await writeAddresses(allAddresses);
     } catch (err) {
       console.error(`Error deploying ${synth.name}`);
       console.error(err);
@@ -142,7 +165,7 @@ const run = async () => {
   }
 
   // console.log(await exchange.totalSupply().call());
-  await writeAddresses(addresses);
+  await writeAddresses(allAddresses);
 };
 
 run().catch((err) => {
