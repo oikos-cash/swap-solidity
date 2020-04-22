@@ -81,7 +81,7 @@ const deployFactory = async () => {
 const deployExchangeForSynth = async (factory, synthCode) => {
   let synthAddress;
   if (synthCode === "OKS") {
-    synthAddress = oikos.getTarget({ network: "shasta" }).ProxyERC20.address;
+    synthAddress = oikos.getTarget({ network }).ProxyERC20.address;
   } else {
     synthAddress = snx[synthCode].contract.address;
   }
