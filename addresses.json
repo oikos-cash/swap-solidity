@@ -1,10 +1,6 @@
 {
   "mainnet": {
     "exchanges": {
-      "OKS": {
-        "address": "41c4ff5687519502bc38c47e742622396a87906391",
-        "tokenAddress": "41e90ca52ebf82c295d79024076d37b6c5c604e172"
-      },
       "sUSD": {
         "address": "41179297a859270da3a198b04bf8a8eacabc5588ca",
         "tokenAddress": "4166dd0a09022885b1a5eb543815f264b40d2f232a"
@@ -12,6 +8,10 @@
       "sTRX": {
         "address": "41020c35f781bc9e50acf40dea40157d04e397c316",
         "tokenAddress": "4163f025e0e40e62b1600e90e0b563e99e838a616c"
+      },
+      "OKS": {
+        "address": "415cd167f00dfbde8b83e831b7da4fd18f8b54bf89",
+        "tokenAddress": "41e8b79bcb1ed65f10338897fb6b38891459df2d6e"
       }
     },
     "factory": "41e11d740217ffae38d630ed19cee570fa84a7f1de"
