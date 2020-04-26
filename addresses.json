@@ -12,6 +12,14 @@
       "OKS": {
         "address": "415cd167f00dfbde8b83e831b7da4fd18f8b54bf89",
         "tokenAddress": "41e8b79bcb1ed65f10338897fb6b38891459df2d6e"
+      },
+      "USDJ": {
+        "address": "41d3caa05840b7246e51cc764630071683b4f6f5a6",
+        "tokenAddress": "TMwFHYXLJaRUPeW6421aqXL4ZEzPRFGkGT"
+      },
+      "JST": {
+        "address": "417620709b46ac5516a674d8a53c98d6a7c3a860b6",
+        "tokenAddress": "TCFLL5dx5ZJdKnWuesXxi1VPwjLVmWZZy9"
       }
     },
     "factory": "41e11d740217ffae38d630ed19cee570fa84a7f1de"

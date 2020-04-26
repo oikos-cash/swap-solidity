@@ -6,6 +6,7 @@ const TronWeb = require("tronweb");
 const { SynthetixJs } = require("@oikos/oikos-js");
 const oikos = require("@oikos/oikos");
 
+const otherTokens = require("./other-tokens.js");
 const UniswapFactory = require("../build/contracts/UniswapFactory.json");
 const UniswapExchange = require("../build/contracts/UniswapExchange.json");
 
@@ -85,14 +86,24 @@ const deployExchangeForSynth = async (factory, synthCode) => {
   } else {
     synthAddress = snx[synthCode].contract.address;
   }
+
+  return await deployExchangeForToken(factory, {
+    code: synthCode,
+    address: synthAddress,
+  });
+};
+
+const deployExchangeForToken = async (factory, token) => {
+  const { address: tokenAddress, code } = token;
+
   const { abi, bytecode } = UniswapExchange;
 
-  if (!isReset && addresses.exchanges[synthCode]) {
-    console.log(`${synthCode} exchange already deployed, skipping.`);
+  if (!isReset && addresses.exchanges[code]) {
+    console.log(`${code} exchange already deployed, skipping.`);
     return new TronWeb.Contract(
       tronWeb,
       abi,
-      addresses.exchanges[synthCode].address
+      addresses.exchanges[code].address
     );
   }
 
@@ -104,7 +115,6 @@ const deployExchangeForSynth = async (factory, synthCode) => {
   });
 
   const factoryAddress = factory.address;
-  const tokenAddress = synthAddress;
   await contract.setup(tokenAddress, factoryAddress).send();
 
   // register with factory
@@ -117,7 +127,7 @@ const deployExchangeForSynth = async (factory, synthCode) => {
     console.log(res);
   }
 
-  console.log(`Deployed exchange for ${synthCode} at ${exchangeAddress}`);
+  console.log(`Deployed exchange for ${code} at ${exchangeAddress}`);
 
   /*
   console.log("Asking factory about the token exchange address:");
@@ -126,7 +136,7 @@ const deployExchangeForSynth = async (factory, synthCode) => {
   // exchange deployed
   addresses.exchanges = {
     ...(addresses.exchanges || {}),
-    [synthCode]: {
+    [code]: {
       address: contract.address,
       tokenAddress,
     },
@@ -160,6 +170,16 @@ const run = async () => {
       await writeAddresses(allAddresses);
     } catch (err) {
       console.error(`Error deploying ${synth.name}`);
+      console.error(err);
+    }
+  }
+
+  for (token of otherTokens[network]) {
+    try {
+      await deployExchangeForToken(factory, token);
+      await writeAddresses(allAddresses);
+    } catch (err) {
+      console.error(`Error deploying ${token.name}`);
       console.error(err);
     }
   }
