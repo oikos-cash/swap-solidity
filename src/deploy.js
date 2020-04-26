@@ -94,10 +94,13 @@ const deployExchangeForSynth = async (factory, synthCode) => {
 };
 
 const deployExchangeForToken = async (factory, token) => {
-  const { address: tokenAddress, code } = token;
+  const { address, code } = token;
 
   const { abi, bytecode } = UniswapExchange;
 
+  const tokenAddress = address.startsWith("T")
+    ? TronWeb.address.toHex(address)
+    : address;
   if (!isReset && addresses.exchanges[code]) {
     console.log(`${code} exchange already deployed, skipping.`);
     return new TronWeb.Contract(
