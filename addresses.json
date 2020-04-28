@@ -1,18 +1,6 @@
 {
   "mainnet": {
     "exchanges": {
-      "sUSD": {
-        "address": "41179297a859270da3a198b04bf8a8eacabc5588ca",
-        "tokenAddress": "4166dd0a09022885b1a5eb543815f264b40d2f232a"
-      },
-      "sTRX": {
-        "address": "41020c35f781bc9e50acf40dea40157d04e397c316",
-        "tokenAddress": "4163f025e0e40e62b1600e90e0b563e99e838a616c"
-      },
-      "OKS": {
-        "address": "415cd167f00dfbde8b83e831b7da4fd18f8b54bf89",
-        "tokenAddress": "41e8b79bcb1ed65f10338897fb6b38891459df2d6e"
-      },
       "USDJ": {
         "address": "41d3caa05840b7246e51cc764630071683b4f6f5a6",
         "tokenAddress": "41834295921a488d9d42b4b3021ed1a3c39fb0f03e"
@@ -20,6 +8,18 @@
       "JST": {
         "address": "417620709b46ac5516a674d8a53c98d6a7c3a860b6",
         "tokenAddress": "4118fd0626daf3af02389aef3ed87db9c33f638ffa"
+      },
+      "OKS": {
+        "address": "41a62c6b3cdfa1852ef81af882b27f3ef1bd6ccad6",
+        "tokenAddress": "41636a44f7952b57bf588fec02d6296545064890d1"
+      },
+      "sUSD": {
+        "address": "4152029e10ce9871701db9b2cf208081517e57435c",
+        "tokenAddress": "41f23fd0879c9cdd078c355d9b75b7d42919a77880"
+      },
+      "sTRX": {
+        "address": "414f15c64711d8f260fcc823c40f6d40fa673b0d1d",
+        "tokenAddress": "413a23de80b505d9b6ec6655dadfb0744ed7e4628c"
       }
     },
     "factory": "41e11d740217ffae38d630ed19cee570fa84a7f1de"
