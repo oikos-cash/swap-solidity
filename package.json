@@ -1,6 +1,6 @@
 {
   "name": "@oikos/swap",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Oikos Swap Contracts",
   "repository": "https://github.com/oikos-cash/swap",
   "license": "MIT",
