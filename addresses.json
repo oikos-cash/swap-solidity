@@ -10,16 +10,16 @@
         "tokenAddress": "4118fd0626daf3af02389aef3ed87db9c33f638ffa"
       },
       "OKS": {
-        "address": "41a62c6b3cdfa1852ef81af882b27f3ef1bd6ccad6",
-        "tokenAddress": "41636a44f7952b57bf588fec02d6296545064890d1"
+        "address": "41912e0d0acc603ffb76b527bd8b4b01bd69fd3099",
+        "tokenAddress": "41e6568098f145f7b4d47142ad09b52be9f4f8ca08"
       },
       "sUSD": {
-        "address": "4152029e10ce9871701db9b2cf208081517e57435c",
-        "tokenAddress": "41f23fd0879c9cdd078c355d9b75b7d42919a77880"
+        "address": "4175954a77ceafb5a9acd93b9e4a20e70b50e2033a",
+        "tokenAddress": "4188bf27f894913ee2187f0551fe440db34b7a9a71"
       },
       "sTRX": {
-        "address": "414f15c64711d8f260fcc823c40f6d40fa673b0d1d",
-        "tokenAddress": "413a23de80b505d9b6ec6655dadfb0744ed7e4628c"
+        "address": "41b3595b335393e5a9172e26f42255b0644b9f25f6",
+        "tokenAddress": "4103a814da5c65266b24aa8ea885d07b30ba9359d5"
       }
     },
     "factory": "41e11d740217ffae38d630ed19cee570fa84a7f1de"
