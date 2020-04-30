@@ -76,8 +76,8 @@
     "openzeppelin-solidity": "^2.1.1"
   },
   "dependencies": {
-    "@oikos/oikos": "^0.3.0",
-    "@oikos/oikos-js": "^0.3.0",
+    "@oikos/oikos": "^0.4.0",
+    "@oikos/oikos-js": "^0.4.1",
     "tronbox": "^2.7.11",
     "tronweb": "^2.10.1"
   }
