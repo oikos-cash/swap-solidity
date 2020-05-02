@@ -20,7 +20,11 @@
       "sTRX": {
         "address": "411b96febe0d70fd52c939afed771bf6481d92f3de",
         "tokenAddress": "41a099cc498284ed6e25f3c99e6d55074e6ba42911"
-      }
+      },
+      "TWK": {
+        "address": "41182cbf5c1bc88cd393e439b5044586b332492e7f",
+        "tokenAddress": "41130e4c9746e2f7b0a9d1f5eab71aa13896037ae8"
+      }      
     },
     "factory": "41e11d740217ffae38d630ed19cee570fa84a7f1de"
   },
