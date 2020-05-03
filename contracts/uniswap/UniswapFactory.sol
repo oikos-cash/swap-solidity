@@ -23,7 +23,7 @@ contract UniswapFactory {
   |__________________________________*/
 
   function initializeFactory(address template) public {
-    require(exchangeTemplate == address(0));
+    require(exchangeTemplate == address(0));                    
     require(template != address(0));
     exchangeTemplate = template;
   }
@@ -44,9 +44,10 @@ contract UniswapFactory {
   }
 
   // TODO: get token directly from exchange
-  function registerExchange(address exchange, address token) public returns (address) {
+  function registerExchange(address payable exchange, address token) public returns (address) {
     require(token != address(0));
     require(token_to_exchange[token] == address(0));
+    require(UniswapExchange(exchange).factoryAddress() == address(this), "exchange.factory does not match");
     token_to_exchange[token] = address(exchange);
     exchange_to_token[address(exchange)] = token;
     uint256 token_id = tokenCount + 1;
