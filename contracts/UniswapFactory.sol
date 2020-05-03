@@ -1,7 +1,7 @@
 pragma solidity ^0.5.0;
 
 import "./UniswapExchange.sol";
-import "../interfaces/IUniswapExchange.sol";
+import "./IUniswapExchange.sol";
 
 
 contract UniswapFactory {
@@ -23,7 +23,7 @@ contract UniswapFactory {
   |__________________________________*/
 
   function initializeFactory(address template) public {
-    require(exchangeTemplate == address(0));                    
+    require(exchangeTemplate == address(0));
     require(template != address(0));
     exchangeTemplate = template;
   }
