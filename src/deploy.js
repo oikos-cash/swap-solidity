@@ -12,12 +12,8 @@ const UniswapExchange = require("../build/contracts/UniswapExchange.json");
 
 const isReset = process.argv.includes("--reset");
 let allAddresses = require("../addresses.json");
-if (Object.keys(allAddresses).length === 0) {
-  allAddresses = {
-    mainnet: { exchanges: {} },
-    shasta: { exchanges: {} },
-  };
-}
+allAddresses.mainnet = allAddresses.mainnet || { exchanges: {} };
+allAddresses.shasta = allAddresses.shasta || { exchanges: {} };
 
 const network = process.env.TRON_NETWORK || "mainnet";
 
@@ -66,7 +62,7 @@ const deployFactory = async () => {
   const contract = await tronWeb.contract().new({
     abi,
     bytecode,
-    // feeLimit:1000000000,
+    // feeLimit: 10 * 1e6,
     callValue: 0,
     // userFeePercentage:1,
     // originEnergyLimit:10000000,
@@ -114,6 +110,7 @@ const deployExchangeForToken = async (factory, token) => {
     abi,
     bytecode,
     callValue: 0,
+    // feeLimit: 10 * 1e6,
     // parameters:[para1,2,3,...]
   });
 

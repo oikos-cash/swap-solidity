@@ -15,5 +15,30 @@
       }
     },
     "factory": "41c898d89e9b2858f4e7ae652678029d4a621be827"
+  },
+  "mainnet": {
+    "exchanges": {
+      "OKS": {
+        "address": "41c6521615602b1a4317fd946f234671ab3f994673",
+        "tokenAddress": "41e11cdc164a9d8c1ae19d95b0165278690d39d84b"
+      },
+      "sTRX": {
+        "address": "41cd68af7ea323057bdd92ccd36aad2c4bb6b4ef48",
+        "tokenAddress": "41a099cc498284ed6e25f3c99e6d55074e6ba42911"
+      },
+      "USDJ": {
+        "address": "41bf9196ba38d4164d6e348c3784506936d2f17f25",
+        "tokenAddress": "41834295921a488d9d42b4b3021ed1a3c39fb0f03e"
+      },
+      "JST": {
+        "address": "4195f4a3a756f289f60dbf632d64d8542053fc32f8",
+        "tokenAddress": "4118fd0626daf3af02389aef3ed87db9c33f638ffa"
+      },
+      "sUSD": {
+        "address": "416a6f4ad0e5b95d14b03c31a7c4411555f807a922",
+        "tokenAddress": "41da2853b2bede0e3018f56d47624a413b2abe0831"
+      }
+    },
+    "factory": "410bdcba8ca6bafcec522f20eef0cce9ba603f3e43"
   }
 }
