@@ -97,48 +97,60 @@ const deployExchangeForToken = async (factory, token) => {
   const tokenAddress = address.startsWith("T")
     ? TronWeb.address.toHex(address)
     : address;
+
+  let contract;
   if (!isReset && addresses.exchanges[code]) {
-    console.log(`${code} exchange already deployed, skipping.`);
-    return new TronWeb.Contract(
+    contract = new TronWeb.Contract(
       tronWeb,
       abi,
       addresses.exchanges[code].address
     );
+    // return exchangeContract
   }
 
-  const contract = await tronWeb.contract().new({
-    abi,
-    bytecode,
-    callValue: 0,
-    // feeLimit: 10 * 1e6,
-    // parameters:[para1,2,3,...]
-  });
-
-  const factoryAddress = factory.address;
-  await contract.setup(tokenAddress, factoryAddress).send();
-
-  // register with factory
-  const exchangeAddress = contract.address;
-  const res = await factory
-    .registerExchange(exchangeAddress, tokenAddress)
-    .send({ shouldPollResponse: true });
-
-  if (typeof res !== "string") {
-    console.log(res);
+  if (contract) {
+    console.log(`${code} exchange already deployed, skipping deployment.`);
+  } else {
+    contract = await tronWeb.contract().new({
+      abi,
+      bytecode,
+      callValue: 0,
+      // feeLimit: 10 * 1e6,
+      // parameters:[para1,2,3,...]
+    });
   }
 
-  console.log(`Deployed exchange for ${code} at ${exchangeAddress}`);
+  if (addresses.exchanges[code].setup) {
+    console.log(`${code} exchange already setup, skipping setup.`);
+  } else {
+    console.log(`Setting up ${code} exchange.`);
+    const factoryAddress = factory.address;
+    await contract.setup(tokenAddress, factoryAddress).send();
+
+    // register with factory
+    const exchangeAddress = contract.address;
+    const res = await factory
+      .registerExchange(exchangeAddress, tokenAddress)
+      .send({ shouldPollResponse: true });
+
+    if (typeof res !== "string") {
+      console.log(res);
+    }
+
+    console.log(`Setup exchange for ${code} at ${exchangeAddress}`);
+  }
 
   /*
-  console.log("Asking factory about the token exchange address:");
-  console.log(await factory.getExchange(tokenAddress).call());
-  */
+    console.log("Asking factory about the token exchange address:");
+    console.log(await factory.getExchange(tokenAddress).call());
+    */
   // exchange deployed
   addresses.exchanges = {
     ...(addresses.exchanges || {}),
     [code]: {
       address: contract.address,
       tokenAddress,
+      setup: true,
     },
   };
   return contract;

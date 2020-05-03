@@ -3,15 +3,18 @@
     "exchanges": {
       "OKS": {
         "address": "4130c4c47bc610904402d6fd04ef2ef0d5c34726ea",
-        "tokenAddress": "41e90ca52ebf82c295d79024076d37b6c5c604e172"
+        "tokenAddress": "41e90ca52ebf82c295d79024076d37b6c5c604e172",
+        "setup": true
       },
       "sUSD": {
         "address": "41a5938956d834061bd78d2a34c88ee7020c36da7d",
-        "tokenAddress": "410e137dcc4bdb5bdbeb4dc7ea7f572f2dc683152d"
+        "tokenAddress": "410e137dcc4bdb5bdbeb4dc7ea7f572f2dc683152d",
+        "setup": true
       },
       "sTRX": {
         "address": "414ad3664873cc88a50e25ec58516eb4c4f05f2b83",
-        "tokenAddress": "41056c4b3c825e6220784a640945e11a563f129722"
+        "tokenAddress": "41056c4b3c825e6220784a640945e11a563f129722",
+        "setup": true
       }
     },
     "factory": "41c898d89e9b2858f4e7ae652678029d4a621be827"
@@ -20,23 +23,33 @@
     "exchanges": {
       "OKS": {
         "address": "41c6521615602b1a4317fd946f234671ab3f994673",
-        "tokenAddress": "41e11cdc164a9d8c1ae19d95b0165278690d39d84b"
+        "tokenAddress": "41e11cdc164a9d8c1ae19d95b0165278690d39d84b",
+        "setup": true
       },
       "sTRX": {
         "address": "41cd68af7ea323057bdd92ccd36aad2c4bb6b4ef48",
-        "tokenAddress": "41a099cc498284ed6e25f3c99e6d55074e6ba42911"
+        "tokenAddress": "41a099cc498284ed6e25f3c99e6d55074e6ba42911",
+        "setup": true
       },
       "USDJ": {
         "address": "41bf9196ba38d4164d6e348c3784506936d2f17f25",
-        "tokenAddress": "41834295921a488d9d42b4b3021ed1a3c39fb0f03e"
+        "tokenAddress": "41834295921a488d9d42b4b3021ed1a3c39fb0f03e",
+        "setup": true
       },
       "JST": {
         "address": "4195f4a3a756f289f60dbf632d64d8542053fc32f8",
-        "tokenAddress": "4118fd0626daf3af02389aef3ed87db9c33f638ffa"
+        "tokenAddress": "4118fd0626daf3af02389aef3ed87db9c33f638ffa",
+        "setup": true
       },
       "sUSD": {
         "address": "416a6f4ad0e5b95d14b03c31a7c4411555f807a922",
-        "tokenAddress": "41da2853b2bede0e3018f56d47624a413b2abe0831"
+        "tokenAddress": "41da2853b2bede0e3018f56d47624a413b2abe0831",
+        "setup": true
+      },
+      "TEWKEN": {
+        "address": "41344405c37e32e39656420890f4e3028cc00f5ada",
+        "tokenAddress": "41130e4c9746e2f7b0a9d1f5eab71aa13896037ae8",
+        "setup": true
       }
     },
     "factory": "410bdcba8ca6bafcec522f20eef0cce9ba603f3e43"
