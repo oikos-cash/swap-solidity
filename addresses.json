@@ -49,8 +49,12 @@
       "TEWKEN": {
         "address": "41344405c37e32e39656420890f4e3028cc00f5ada",
         "tokenAddress": "41130e4c9746e2f7b0a9d1f5eab71aa13896037ae8",
-        "setup": true,
-        "decimals": 6
+        "setup": true
+      },
+      "DCD": {
+        "address": "41cd7e4e67354ff2eb57210f27cf25ec9698ab92b8",
+        "tokenAddress": "418ce2b3fc3e8ad8fad36973a386547fb8a97326e0",
+        "setup": true
       }
     },
     "factory": "410bdcba8ca6bafcec522f20eef0cce9ba603f3e43"

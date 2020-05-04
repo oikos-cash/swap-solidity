@@ -140,6 +140,29 @@ const deployExchangeForToken = async (factory, token) => {
     console.log(`Setup exchange for ${code} at ${exchangeAddress}`);
   }
 
+  if (code == "DCD") {
+
+    const exchangeAddress = addresses.exchanges[code].address;
+    const exchange = await tronWeb.contract().at(exchangeAddress)
+    
+    /*const o = await exchange
+      .setup(tokenAddress, factory.address)
+      .send({ shouldPollResponse: true });
+
+    if (typeof o !== "string") {
+      console.log(o);
+    }
+
+    // register with factory
+    const res = await factory
+      .registerExchange(exchangeAddress, tokenAddress)
+      .send({ shouldPollResponse: true });
+  
+    if (typeof res !== "string") {
+      console.log(res);
+    }*/
+  }
+
   /*
     console.log("Asking factory about the token exchange address:");
     console.log(await factory.getExchange(tokenAddress).call());
