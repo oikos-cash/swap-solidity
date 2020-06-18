@@ -150,6 +150,7 @@ const deployExchangeForToken = async (factory, token) => {
     [code]: {
       address: contract.address,
       tokenAddress,
+      decimals: token.decimals,
       setup: true,
     },
   };
