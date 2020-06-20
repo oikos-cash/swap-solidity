@@ -9,5 +9,6 @@ module.exports = {
     },
     { address: "TNp9BX9NMjsmWPZugw13VisP1oVJT2pMDv", code: "DCD", decimals: 6 },
     { address: "TPpLkxGeKragRC7qpiQjjtNmf6shXWi8i9", code: "FRAG" },
+    { address: "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t", code: "USDT", decimals: 6}
   ],
 };
