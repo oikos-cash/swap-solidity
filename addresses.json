@@ -68,6 +68,12 @@
         "tokenAddress": "41a614f803b6fd780986a42c78ec9c7f77e6ded13c",
         "decimals": 6,
         "setup": true
+      },
+      "CNS": {
+        "address": "41bfedf059136ad91f316928ade9ebf8d0630483b6",
+        "tokenAddress": "417c503a569a8e62210bdce6b3e733272e154d08ab",
+        "decimals": 8,
+        "setup": true
       }
     },
     "factory": "410bdcba8ca6bafcec522f20eef0cce9ba603f3e43"
