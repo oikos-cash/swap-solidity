@@ -40,8 +40,8 @@ contract UniswapExchange is ERC20 {
     );
     factory = IUniswapFactory(factory_addr);
     token = IERC20(token_addr);
-    name = 0x4f696b6f73205377617000000000000000000000000000000000000000000000;
-    symbol = 0x535741500000000000000000000000000000000000000000000000000000;
+    name = 0x556e697377617020563100000000000000000000000000000000000000000000;
+    symbol = 0x554e492d56310000000000000000000000000000000000000000000000000000;
     decimals = 18;
   }
 
@@ -94,7 +94,7 @@ contract UniswapExchange is ERC20 {
     uint256 token_reserve = token.balanceOf(address(this));
     uint256 tokens_bought = getInputPrice(eth_sold, address(this).balance.sub(eth_sold), token_reserve);
     require(tokens_bought >= min_tokens);
-    token.transfer(recipient, tokens_bought);
+    require(token.transfer(recipient, tokens_bought));
     emit TokenPurchase(buyer, eth_sold, tokens_bought);
     return tokens_bought;
   }
@@ -132,7 +132,7 @@ contract UniswapExchange is ERC20 {
     if (eth_refund > 0) {
       buyer.transfer(eth_refund);
     }
-    token.transfer(recipient, tokens_bought);
+    require(token.transfer(recipient, tokens_bought));
     emit TokenPurchase(buyer, eth_sold, tokens_bought);
     return eth_sold;
   }
@@ -604,7 +604,7 @@ contract UniswapExchange is ERC20 {
     _balances[msg.sender] = _balances[msg.sender].sub(amount);
     _totalSupply = total_liquidity.sub(amount);
     msg.sender.transfer(eth_amount);
-    token.transfer(msg.sender, token_amount);
+    require(token.transfer(msg.sender, token_amount));
     emit RemoveLiquidity(msg.sender, eth_amount, token_amount);
     emit Transfer(msg.sender, address(0), amount);
     return (eth_amount, token_amount);

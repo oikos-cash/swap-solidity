@@ -26,3 +26,12 @@ Deploy:
 npm run deploy:mainnet
 npm run deploy:shasta
 ```
+
+## Deploying Exchange through Tronscan
+
+1. Go to https://tronscan.org/#/contracts/contract-compiler and drag &
+   drop files from `./tronscan-contracts` directory.
+2. Click compile
+   - Solidity version: 0.5.8_Odyssey_v3.6.0
+   - Optimization: enabled
+   - Runs: 200
