@@ -15,5 +15,10 @@ module.exports = {
       decimals: 6,
     },
     { address: "TMJWuBDvwvcm6QUWXDaC6GqTyq3FgEmWEt", code: "CNS", decimals: 8 },
+    {
+      address: "TNo59Khpq46FGf4sD7XSWYFNfYfbc8CqNK",
+      code: "BNKR",
+      decimals: 6,
+    },
   ],
 };

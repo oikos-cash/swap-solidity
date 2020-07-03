@@ -35,3 +35,6 @@ npm run deploy:shasta
    - Solidity version: 0.5.8_Odyssey_v3.6.0
    - Optimization: enabled
    - Runs: 200
+3. Click deploy (keep default parameters)
+4. Copy deployed contract address (e.g. THZCPzTwKw1JtTjxJSubKwyEyAB34SXe2J)
+5. Add entry to `./src/other-tokens.js` with token information.
