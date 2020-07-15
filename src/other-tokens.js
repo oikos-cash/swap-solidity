@@ -21,7 +21,7 @@ module.exports = {
       decimals: 6,
     },
     {
-      address: "TRFukZ34Jm4RQTrUoYvjBSjVzmvCgTiC9S",
+      address: "TQ3UnKu9aRqHN2tnwkSUj2aXmswc4emygc",
       code: "sETH",
       decimals: 18,
     },
