@@ -20,5 +20,10 @@ module.exports = {
       code: "BNKR",
       decimals: 6,
     },
+    {
+      address: "TRFukZ34Jm4RQTrUoYvjBSjVzmvCgTiC9S",
+      code: "sETH",
+      decimals: 18,
+    },
   ],
 };

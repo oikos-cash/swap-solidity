@@ -80,6 +80,12 @@
         "tokenAddress": "418caeea9c7ebb8840ee4b49d10542b99cec6ffbc6",
         "decimals": 6,
         "setup": true
+      },
+      "sETH": {
+        "address": "41a7b28ef67426fe38d0430ce7e30ba73178510a5d",
+        "tokenAddress": "41a7b28ef67426fe38d0430ce7e30ba73178510a5d",
+        "decimals": 18,
+        "setup": true
       }
     },
     "factory": "410bdcba8ca6bafcec522f20eef0cce9ba603f3e43"
