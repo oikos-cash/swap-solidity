@@ -82,8 +82,9 @@
         "setup": true
       },
       "sETH": {
-        "address": "41a7b28ef67426fe38d0430ce7e30ba73178510a5d",
-        "tokenAddress": "419a609902ca627381ebf8ac20d765f2df21bec7f3",
+        "address": "4154f6ac1482ba0d6c64cb6cec18d6c9ecce6146a9",
+        "tokenAddress": "41a1402557c4c7a50f958e15c0527a60bf6666c77e",
+        "decimals": 18,
         "setup": true
       }
     },
