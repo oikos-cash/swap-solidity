@@ -86,6 +86,12 @@
         "tokenAddress": "41a1402557c4c7a50f958e15c0527a60bf6666c77e",
         "decimals": 18,
         "setup": true
+      },
+      "MIMA": {
+        "address": "4149e1d4edd8a3794106ef6f9d36173dc85098b545",
+        "tokenAddress": "4149e1d4edd8a3794106ef6f9d36173dc85098b545",
+        "decimals": 6,
+        "setup": true
       }
     },
     "factory": "410bdcba8ca6bafcec522f20eef0cce9ba603f3e43"

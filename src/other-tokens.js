@@ -25,5 +25,10 @@ module.exports = {
       code: "sETH",
       decimals: 18,
     },
+    {
+      address: "TGhrs8NodYvo1WJjBL5MJjBYsSJPstxsVo",
+      code: "MIMA",
+      decimals: 6,
+    },
   ],
 };
