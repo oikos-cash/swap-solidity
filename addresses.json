@@ -89,16 +89,16 @@
       },
       "MIMA": {
         "address": "4149e1d4edd8a3794106ef6f9d36173dc85098b545",
-        "tokenAddress": "4149e1d4edd8a3794106ef6f9d36173dc85098b545",
+        "tokenAddress": "41400e3a5eaedd27b4d9193de2bf442e1d072d5a5c",
         "decimals": 6,
         "setup": true
-      },
-      "CSX": {
-        "address": "419a1de68c673b245a1ef636bea562015dc01baf1f",
-        "tokenAddress": "41629550b68f84db46b53ebe095c92e5815aaa6d24",
-        "decimals": 6,
-        "setup": false
       }
+    },
+    "CSX": {
+      "address": "419a1de68c673b245a1ef636bea562015dc01baf1f",
+      "tokenAddress": "41629550b68f84db46b53ebe095c92e5815aaa6d24",
+      "decimals": 6,
+      "setup": false
     },
     "factory": "410bdcba8ca6bafcec522f20eef0cce9ba603f3e43"
   }
