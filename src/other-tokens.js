@@ -26,8 +26,13 @@ module.exports = {
       decimals: 18,
     },
     {
-      address: "TGhrs8NodYvo1WJjBL5MJjBYsSJPstxsVo",
+      address: "TFouHv3jFqMbHuz1Y2bXyShTywNrofauSA",
       code: "MIMA",
+      decimals: 6,
+    },
+    {
+      address: "TJxU6TzuixbCagS3cXBpXHJGuqBY3awkJv",
+      code: "CSX",
       decimals: 6,
     },
   ],
