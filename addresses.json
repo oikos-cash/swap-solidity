@@ -1,4 +1,7 @@
 {
+  "nile": {
+    "factory": "0x64d5aF91C3A4aE5dB503dA8be25b5E47ad2D944e"
+  },
   "shasta": {
     "exchanges": {
       "OKS": {

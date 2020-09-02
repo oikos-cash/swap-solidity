@@ -35,42 +35,13 @@
     "console": "truffle console",
     "compile": "tronbox compile",
     "deploy": "node src/deploy.js",
+    "deploy:nile": "truffle deploy --network nile",
     "deploy:shasta": "TRON_NETWORK=shasta npm run deploy",
     "deploy:mainnet": "TRON_NETWORK=mainnet npm run deploy"
   },
-  "config": {
-    "mnemonic": "fossil metal angry goat echo rookie victory fault impact recycle boring movie",
-    "ganacheNetworkID": 127001,
-    "ganachePort": 8545,
-    "ganacheGasLimit": "0xfffffffffff",
-    "ganacheGasPrice": "20000000000",
-    "etherBalance": "100000",
-    "extra": ""
-  },
   "devDependencies": {
-    "@types/chai-as-promised": "^7.1.0",
-    "@types/chai-string": "^1.4.1",
-    "@types/mocha": "^5.2.5",
-    "chai": "^4.2.0",
-    "chai-as-promised": "^7.1.1",
-    "chai-bignumber": "^3.0.0",
-    "chai-string": "^1.5.0",
-    "dotenv": "^6.1.0",
-    "eth-gas-reporter": "^0.1.12",
-    "ethers": "^4.0.23",
-    "ganache-cli": "6.3.0-beta.0",
-    "ganache-core": "2.4.0-beta.0",
-    "openzeppelin-solidity": "^2.1.2",
-    "solc": "^0.5.3",
-    "solidity-coverage": "^0.5.11",
-    "solium": "^1.2.2",
-    "truffle": "^5.0.3",
-    "truffle-contract": "^4.0.4",
-    "truffle-hdwallet-provider": "1.0.3",
-    "tslint": "^5.12.1",
-    "typechain": "^0.3.11",
-    "typescript": "3.3.3",
-    "zos-lib": "^2.1.2"
+    "@opentron/java-tron-provider": "^0.3.6",
+    "truffle": "^5.1.42"
   },
   "peerDependencies": {
     "openzeppelin-solidity": "^2.1.1"

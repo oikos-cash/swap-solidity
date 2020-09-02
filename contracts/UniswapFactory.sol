@@ -12,7 +12,7 @@ contract UniswapFactory {
 
   event NewExchange(address indexed token, address indexed exchange);
 
-  address public exchangeTemplate;
+  address public exchangeTemplate; // todo: removeme
   uint256 public tokenCount;
   mapping (address => address) internal token_to_exchange;
   mapping (address => address) internal exchange_to_token;
@@ -30,7 +30,6 @@ contract UniswapFactory {
 
   function createExchange(address token) public returns (address) {
     require(token != address(0));
-    require(exchangeTemplate != address(0));
     require(token_to_exchange[token] == address(0));
     UniswapExchange exchange = new UniswapExchange();
     exchange.setup(token, address(this));

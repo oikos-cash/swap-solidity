@@ -27,6 +27,12 @@ npm run deploy:mainnet
 npm run deploy:shasta
 ```
 
+## Contract addresses
+
+### Nile
+
+Factory: [TKANZPkAnhGwfJYheS78kPgGsCxkvDozWV](https://nile.tronscan.org/#/contract/TKANZPkAnhGwfJYheS78kPgGsCxkvDozWV/code)
+
 ## Deploying Exchange through Tronscan
 
 1. Go to https://tronscan.org/#/contracts/contract-compiler and drag &
